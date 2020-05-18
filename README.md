@@ -1,1 +1,4 @@
 # restaurant-finder
+
+# Team
+- Tochukwu
