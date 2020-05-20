@@ -2,4 +2,4 @@
 
 # Team
 
-- Shauna Griffin (teacher)
+- Gosia Kuczyńska (student)
