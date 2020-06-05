@@ -1,5 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Oswald:wght@200;300;400&family=Quicksand:wght@400;600&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Oswald:wght@200;300;400&family=Quicksand:wght@400;600&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .App {
 	text-align: center;
 	margin: 0;
+	background-color: #fed451;
+	box-sizing: border-box;
+}
+
+.header {
+	height: 380px;
+	background-image: url("https://i.imgur.com/OodqdEi.jpg");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	-webkit-box-shadow: inset 0px 93px 86px 1px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: inset 0px 93px 86px 1px rgba(0, 0, 0, 0.33);
+	box-shadow: inset 0px 93px 86px 1px rgba(0, 0, 0, 0.33);
+	margin-bottom: 40px;
+}
+
+nav {
+	display: flex;
+	flex-direction: flex-start;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 10px;
+}
+
+nav div {
+	border: 1px solid transparent;
+	border-radius: 50px;
+	padding: 10px 30px;
+	font-family: "Oleo Script", cursive;
+	font-size: 26px;
+	font-weight: 700;
+	color: white;
+	/* background-color: #fec925; */
+}
+
+.filterSection {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: 60px;
+	padding: 40px 0;
+	
+}
+
+.dropdownContainer {
+	width: 300px;
+	margin: 0 10px;
+}
+
+.activeButton {
+	font-family: "Raleway", sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	background-color: #fa1e44;
+	color: white;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	-webkit-box-shadow: 24px 20px 42px -46px rgba(0, 0, 0, 0.32);
+	-moz-box-shadow: 24px 20px 42px -46px rgba(0, 0, 0, 0.32);
+	box-shadow: 24px 20px 42px -46px rgba(0, 0, 0, 0.32);
+}
+
+.select-box {
+	display: flex;
+	width: 220px;
+	flex-direction: column;
+	border: none;
+}
+
+.select-box .options-container {
+	border: 1px solid #fa1e44;
+	max-height: 0;
+	opacity: 0;
+	transition: all 0.4s;
+	border-radius: 10px;
+	overflow: hidden;
+	order: 1;
+	-webkit-box-shadow: inset -4px 28px 81px -46px rgba(0, 0, 0, 0.36);
+	-moz-box-shadow: inset -4px 28px 81px -46px rgba(0, 0, 0, 0.36);
+	box-shadow: inset -4px 28px 81px -46px rgba(0, 0, 0, 0.36);
+}
+
+.selected {
+	margin-bottom: 5px;
+	order: 0;
+}
+
+.select-box .options-container.active + .selected::after {
+	transform: rotate(180deg);
+}
+
+.select-box .options-container.active {
+	max-height: 100px;
+	opacity: 1;
+	overflow-y: scroll;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+	width: 6px;
+	background-color: rgba(250, 30, 68, 0.7);
+	border-radius: 0 4px 4px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 180, 235, 0.9);
+	border-radius: 0 4px 4px 0;
+}
+
+.select-box .option,
+.selected {
+	padding: 14px 20px;
+}
+.select-box .option {
+	/* border-bottom: 1px solid #fa1e44; */
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
+	color: white;
+	margin-bottom: 2px;
+}
+
+.select-box .option:hover {
+	background: rgba(250, 30, 68, 0.4);
+}
+
+.select-box label {
+	cursor: pointer;
+}
+
+.select-box .option .radio {
+	display: none;
 }

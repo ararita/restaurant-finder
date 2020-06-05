@@ -1,20 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import { DataContext } from "../DataContext";
-
-// import CardTitle from "../screen/CardTitle";
-
-const RestaurantCard = () => {
-	const { data } = useContext(DataContext);
+const RestaurantCard = ({ item }) => {
 	return (
 		<div>
-			{data.map((item) => (
-				<StyledContainer key={item.id}>
-					<FoodImg style={{backgroundImage: `url(${item.photos[0].links[0]})`}}></FoodImg>
-					<StyledTitle>{item.name}</StyledTitle>
+			<StyledContainer>
+				<FoodImg
+					style={{ backgroundImage: `url(${item.photos[0].links[0]})` }}
+				></FoodImg>
+				<StyledName>{item.name}</StyledName>
+				<TextContainer>
 					<StyledRating>
-						{item.rating} / 5.0{" "}
+						{item.rating} / 5.0
 						<StyledSpan>({item.user_ratings_total})</StyledSpan>
 					</StyledRating>
 					<StyledCategoryContainer>
@@ -33,22 +30,21 @@ const RestaurantCard = () => {
 						<StyledListItem>
 							Pick Up {item.pickup ? "available" : "not available"}
 						</StyledListItem>
-						{item.price_level >= 4 && (
-							<StyledListItem>expensive</StyledListItem>
-						)}
-						{3 >= item.price_level >= 2 && (
-							<StyledListItem>average</StyledListItem>
-						)}
-						{2 > item.price_level >= 1 && (
-							<StyledListItem>cheap</StyledListItem>
-						)}
-
+						{/* {item.price_level >= 4 && (
+						<StyledListItem>expensive</StyledListItem>
+					)}
+					{3 >= item.price_level >= 2 && (
+						<StyledListItem>average</StyledListItem>
+					)}
+					{2 > item.price_level >= 1 && (
+						<StyledListItem>cheap</StyledListItem>
+					)} */}
 						<StyledListItem>{item.formatted_address}</StyledListItem>
 						<StyledListItem> {item.social.phone}</StyledListItem>
 						<StyledListItem>{item.social.email}</StyledListItem>
 					</StyledDetailList>
-				</StyledContainer>
-			))}
+				</TextContainer>
+			</StyledContainer>
 		</div>
 	);
 };
@@ -56,26 +52,42 @@ const RestaurantCard = () => {
 export default RestaurantCard;
 
 const StyledContainer = styled.div`
-	border: 1px solid #333;
+	border-radius: 10px;
 	width: 340px;
-	margin: 0;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background-color: #fefefe;
+	-webkit-box-shadow: 24px 20px 42px -46px rgba(0, 0, 0, 0.32);
+	-moz-box-shadow: 24px 20px 42px -46px rgba(0, 0, 0, 0.32);
+	box-shadow: 24px 20px 42px -46px rgba(0, 0, 0, 0.32);
 `;
 
 const FoodImg = styled.div`
+	border: 1px solid transparent;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 	width: 100%;
 	height: 200px;
-	background-color: #333;
 	background-repeat: no-repeat;
 	background-position: center;
 	margin: 0;
 `;
 
-const StyledTitle = styled.h2`
+const TextContainer = styled.div`
+	padding: 0 16px 12px 16px;
+`;
+
+const StyledName = styled.h2`
 	font-family: "Raleway", sans-serif;
 	font-size: 20px;
 	margin: 0;
-	// border: 1px solid purple;
-	padding: 10px 0 6px 0;
+	border-radius: 30px;
+	display:inline;
+	padding: 10px 20px 6px 20px;
+	position: relative;
+	top: -10px;
+	background-color:white;
+	line-height: 1.6;
 `;
 
 const StyledSpan = styled.span`
